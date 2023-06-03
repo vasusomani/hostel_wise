@@ -2,8 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hostel_wise/Pages/Cleaning.dart';
+import 'package:hostel_wise/Pages/Food.dart';
 import 'package:hostel_wise/Pages/HomePage.dart';
 import 'package:hostel_wise/Pages/IntroPage.dart';
+import 'package:hostel_wise/Pages/RegisterComplain.dart';
+import 'package:hostel_wise/Pages/RequestSent.dart';
 import 'package:hostel_wise/Pages/SignUpPage.dart';
 
 import 'SignInPage.dart';

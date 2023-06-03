@@ -81,89 +81,91 @@ class _SignUpPageState extends State<SignUpPage> {
             ],
           ),
           Expanded(
-            child: Container(
-              padding: const EdgeInsets.only(top: 80),
-              decoration: BoxDecoration(
-                color: HexColor("#637892"),
-                borderRadius:
-                    const BorderRadius.only(topLeft: Radius.circular(100)),
-              ),
-              child: GestureDetector(
-                onTap: () {
-                  FocusScope.of(context).requestFocus(FocusNode());
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: Container(
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        children: [
-                          TextFieldName(name),
-                          const SizedBox(height: 20),
-                          TextFieldRegNo(regNo),
-                          const SizedBox(height: 20),
-                          TextFieldEmail(emailID),
-                          const SizedBox(height: 20),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(right: 10),
-                                  child: TextFieldBlock(block),
+            child: SingleChildScrollView(
+              child: Container(
+                padding: const EdgeInsets.only(top: 80),
+                decoration: BoxDecoration(
+                  color: HexColor("#637892"),
+                  borderRadius:
+                      const BorderRadius.only(topLeft: Radius.circular(100)),
+                ),
+                child: GestureDetector(
+                  onTap: () {
+                    FocusScope.of(context).requestFocus(FocusNode());
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: Container(
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            TextFieldName(name),
+                            const SizedBox(height: 20),
+                            TextFieldRegNo(regNo),
+                            const SizedBox(height: 20),
+                            TextFieldEmail(emailID),
+                            const SizedBox(height: 20),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 10),
+                                    child: TextFieldBlock(block),
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 10),
-                                  child: TextFieldRoom(room),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: TextFieldRoom(room),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 20),
-                          TextFieldPass(password),
-                          const SizedBox(height: 20),
-                          TextFieldConfirmPass(confirm_password, password),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              const Text(
-                                "Already have an accout?",
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 15),
-                              ),
-                              TextButton(
-                                  onPressed: () =>
-                                      Navigator.pushNamed(context, '/signin'),
-                                  child: const Text(
-                                    "Login",
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600),
-                                  )),
-                            ],
-                          ),
-                          const SizedBox(height: 5),
-                          ElevatedButton(
-                            onPressed: validate,
-                            style: ButtonStyle(
-                                minimumSize: const MaterialStatePropertyAll(
-                                    Size(150, 50)),
-                                backgroundColor: MaterialStatePropertyAll(
-                                    HexColor("#FFEAD2"))),
-                            child: const Text(
-                              "Sign Up",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 20),
+                              ],
                             ),
-                          ),
-                        ],
+                            const SizedBox(height: 20),
+                            TextFieldPass(password),
+                            const SizedBox(height: 20),
+                            TextFieldConfirmPass(confirm_password, password),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                const Text(
+                                  "Already have an accout?",
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 15),
+                                ),
+                                TextButton(
+                                    onPressed: () =>
+                                        Navigator.pushNamed(context, '/signin'),
+                                    child: const Text(
+                                      "Login",
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w600),
+                                    )),
+                              ],
+                            ),
+                            const SizedBox(height: 5),
+                            ElevatedButton(
+                              onPressed: validate,
+                              style: ButtonStyle(
+                                  minimumSize: const MaterialStatePropertyAll(
+                                      Size(150, 50)),
+                                  backgroundColor: MaterialStatePropertyAll(
+                                      HexColor("#FFEAD2"))),
+                              child: const Text(
+                                "Sign Up",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 20),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

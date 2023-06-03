@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hostel_wise/Util/HexToColor.dart';
+import 'package:hostel_wise/Util/HomeCarosal.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -31,15 +32,16 @@ class HomePage extends StatelessWidget {
                 style: GoogleFonts.poppins(
                     fontSize: 40,
                     fontWeight: FontWeight.w700,
-                    color: HexColor("#9AA7B7")),
+                    color: HexColor("#637892")),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-                height: 150,
+                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                height: 200,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: HexColor("#DBDFEA")),
-              )
+              ),
+              HomeCarosal()
             ],
           ),
         ),

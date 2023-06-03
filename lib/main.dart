@@ -25,16 +25,12 @@ class MyApp extends StatelessWidget {
       //             MaterialStatePropertyAll(Color.fromARGB(100, 30, 30, 30)),
       //             shape: MaterialStatePropertyAll(CircleBorder())))),
       theme: ThemeData(
-          appBarTheme: AppBarTheme(backgroundColor: HexColor("#F7F7F7")),
-          textTheme:
-              const TextTheme(displayMedium: TextStyle(color: Colors.black)),
-          useMaterial3: true,
-          scaffoldBackgroundColor: HexColor("#F7F7F7"),
-          elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStatePropertyAll(HexColor("#F9F9F9")),
-                  shape: const MaterialStatePropertyAll(CircleBorder())))),
+        appBarTheme: AppBarTheme(backgroundColor: HexColor("#F7F7F7")),
+        textTheme:
+            const TextTheme(displayMedium: TextStyle(color: Colors.black)),
+        useMaterial3: true,
+        scaffoldBackgroundColor: HexColor("#F7F7F7"),
+      ),
       title: 'HostelWise',
       debugShowCheckedModeBanner: false,
       initialRoute: '/',

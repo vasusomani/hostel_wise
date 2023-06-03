@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hostel_wise/Pages/HomePage.dart';
+import 'package:hostel_wise/Pages/IntroPage.dart';
+import 'package:hostel_wise/Pages/SignUpPage.dart';
 
 import 'SignInPage.dart';
 
@@ -20,7 +23,7 @@ class _LandingPageState extends State<LandingPage> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => SignInPage(),
+            builder: (context) => HomePage(),
           ));
     });
   }

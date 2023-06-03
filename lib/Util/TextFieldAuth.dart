@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'HexToColor.dart';
@@ -147,6 +148,126 @@ class TextFieldName extends StatelessWidget {
         }
         return null;
       },
+    );
+  }
+}
+
+class TextFieldRegNo extends StatelessWidget {
+  TextFieldRegNo(this.controller);
+  final TextEditingController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: controller,
+      textInputAction: TextInputAction.next,
+      decoration: InputDecoration(
+        hintText: "Reg Number",
+        hintStyle: TextStyle(fontSize: 20, color: Colors.grey),
+        prefixIcon: Icon(
+          Icons.person,
+          color: HexColor("#035357"),
+          size: 30,
+        ),
+        filled: true,
+        fillColor: Colors.white,
+        enabledBorder: EnabledBorder,
+        focusedBorder: FocusedBorder,
+      ),
+      validator: (value) {
+        if (value == null || value.trim() == "" || value.trim().length < 9) {
+          return "Enter a valid name";
+        }
+        return null;
+      },
+    );
+  }
+}
+
+class TextFieldRoom extends StatelessWidget {
+  TextFieldRoom(this.controller);
+  final TextEditingController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: controller,
+      textInputAction: TextInputAction.next,
+      decoration: InputDecoration(
+        hintText: "Room No",
+        hintStyle: TextStyle(fontSize: 20, color: Colors.grey),
+        prefixIcon: Icon(
+          Icons.person,
+          color: HexColor("#035357"),
+          size: 30,
+        ),
+        filled: true,
+        fillColor: Colors.white,
+        enabledBorder: EnabledBorder,
+        focusedBorder: FocusedBorder,
+      ),
+      validator: (value) {
+        if (value == null || value.trim() == "") {
+          return "Enter a valid name";
+        }
+        return null;
+      },
+    );
+  }
+}
+
+List<String> BlocksList = [
+  'A',
+  'B',
+  'B ANNEX',
+  'C',
+  'D',
+  'D ANNEX',
+  'E',
+  'F',
+  'G',
+  'H',
+  'J',
+  'K',
+  'L',
+  'M',
+  'M ANNEX',
+  'N',
+  'P',
+  'Q',
+  'R'
+];
+
+class TextFieldBlock extends StatelessWidget {
+  TextFieldBlock(this.controller);
+  final TextEditingController controller;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: DropdownButtonFormField(
+          items: BlocksList.map(
+            (String block) {
+              return DropdownMenuItem<String>(value: block, child: Text(block));
+            },
+          ).toList(),
+          validator: (value) {
+            if (value == null) {
+              return "Please select an option";
+            }
+            return null;
+          },
+          decoration: InputDecoration(
+            hintText: "Block",
+            prefixIcon: Icon(CupertinoIcons.building_2_fill,
+                color: HexColor("#035357")),
+            hintStyle: TextStyle(fontSize: 20, color: Colors.grey),
+            filled: true,
+            fillColor: Colors.white,
+            enabledBorder: EnabledBorder,
+            focusedBorder: FocusedBorder,
+            border: OutlineInputBorder(),
+          ),
+          onChanged: (String? selectedBlock) {}),
     );
   }
 }

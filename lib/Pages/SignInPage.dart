@@ -1,7 +1,8 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hostel_wise/Util/appBar.dart';
 import '../Util/HexToColor.dart';
+import 'package:http/http.dart' as http;
 import '../Util/TextFieldAuth.dart';
 
 class SignInPage extends StatefulWidget {
@@ -14,8 +15,26 @@ class _SignInPageState extends State<SignInPage> {
   final password = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+  Future<void> _submitData() async {
+    print("FLAG 1");
+    final body = {
+      "LOGIN": emailID.text,
+      "PASSWORD": password.text,
+    };
+    print("FLAG 2");
+    final url = "https://a658-182-79-4-248.ngrok-free.app/generallogin/";
+    print("FLAG 3");
+    final uri = Uri.parse(url);
+    print("FLAG 4");
+    final response = await http.post(uri, body: body);
+    print("FLAG 5");
+    print("${response.statusCode}");
+  }
+
   void _authorize() {
-    if (_formKey.currentState!.validate()) {}
+    if (_formKey.currentState!.validate()) {
+      _submitData();
+    }
   }
 
   @override
@@ -35,26 +54,37 @@ class _SignInPageState extends State<SignInPage> {
       ),
       body: Column(
         children: [
-          Stack(
+          Container(
+            decoration: BoxDecoration(
+                color: HexColor("F7F7F7"),
+                borderRadius:
+                    const BorderRadius.only(bottomRight: Radius.circular(100))),
+            height: 260,
+            width: MediaQuery.of(context).size.width,
+            child: Image.asset(
+              "assets/Icons/graffiti.png",
+            ),
+          ),
+          Align(
+            heightFactor: 0.4,
             alignment: Alignment.bottomRight,
-            children: [
-              Container(
-                color: HexColor("#637892"),
-                height: 115,
-                width: 107,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    color: HexColor("#F7F7F7"),
-                    borderRadius:
-                        BorderRadius.only(bottomRight: Radius.circular(100))),
-                height: 260,
-                width: MediaQuery.of(context).size.width,
-                child: Image.asset(
-                  "assets/Icons/graffiti.png",
+            child: Stack(
+              children: [
+                Container(
+                  color: HexColor("#637892"),
+                  height: 107,
+                  width: 115,
                 ),
-              ),
-            ],
+                Container(
+                  height: 107,
+                  width: 115,
+                  decoration: BoxDecoration(
+                      color: HexColor("F7F7F7"),
+                      borderRadius:
+                          BorderRadius.only(bottomRight: Radius.circular(200))),
+                )
+              ],
+            ),
           ),
           Expanded(
             child: Container(
@@ -71,10 +101,10 @@ class _SignInPageState extends State<SignInPage> {
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     key: _formKey,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Column(
                         children: [
-                          const SizedBox(height: 100),
+                          const SizedBox(height: 70),
                           TextFieldEmail(emailID),
                           const SizedBox(height: 20),
                           TextFieldPass(password),
@@ -87,78 +117,47 @@ class _SignInPageState extends State<SignInPage> {
                                 style: GoogleFonts.inter(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
-                                    color: Colors.grey),
+                                    color: Colors.white),
                                 textAlign: TextAlign.end,
                               ),
                             ),
                           ),
                           const SizedBox(height: 10),
-                          InkWell(
-                            borderRadius: BorderRadius.circular(30),
-                            onTap: () {
-                              _authorize();
-                            },
-                            child: Ink(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 17, horizontal: 80),
-                              decoration: BoxDecoration(
-                                  color: HexColor("#FFEAD2"),
-                                  borderRadius: BorderRadius.circular(30)),
-                              child: const Text(
-                                "Log In",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 20),
-                              ),
+                          ElevatedButton(
+                            onPressed: _authorize,
+                            style: ButtonStyle(
+                                minimumSize:
+                                    MaterialStatePropertyAll(Size(150, 50)),
+                                backgroundColor: MaterialStatePropertyAll(
+                                    HexColor("#FFEAD2"))),
+                            child: const Text(
+                              "Log In",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20),
                             ),
                           ),
-                          // const SizedBox(height: 50),
-                          // Row(
-                          //   mainAxisAlignment: MainAxisAlignment.center,
-                          //   children: const [
-                          //     Expanded(
-                          //       child: Divider(
-                          //         thickness: 1,
-                          //         color: Colors.black,
-                          //         indent: 28,
-                          //         endIndent: 23,
-                          //       ),
-                          //     ),
-                          //     Text("or continue with",
-                          //         style: TextStyle(
-                          //             color: Colors.grey, fontSize: 15)),
-                          //     Expanded(
-                          //       child: Divider(
-                          //         thickness: 1,
-                          //         color: Colors.black,
-                          //         indent: 28,
-                          //         endIndent: 23,
-                          //       ),
-                          //     ),
-                          //   ],
-                          // ),
-                          // const SizedBox(height: 40),
-                          // const SizedBox(height: 30),
-                          // Row(
-                          //   mainAxisAlignment: MainAxisAlignment.center,
-                          //   children: [
-                          //     Text(
-                          //       "Don't have an account?  ",
-                          //       style: TextStyle(
-                          //           color: Colors.grey.shade600, fontSize: 15),
-                          //     ),
-                          //     InkWell(
-                          //       onTap: () =>
-                          //           Navigator.pushNamed(context, '/signup'),
-                          //       child: const Text(
-                          //         "Sign Up",
-                          //         style: TextStyle(
-                          //             fontSize: 15, fontWeight: FontWeight.bold),
-                          //       ),
-                          //     )
-                          //   ],
-                          // )
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Don't have an accout? ",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 15),
+                              ),
+                              TextButton(
+                                  onPressed: () =>
+                                      Navigator.pushNamed(context, '/signup'),
+                                  child: Text(
+                                    "Sign Up",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600),
+                                  )),
+                            ],
+                          )
                         ],
                       ),
                     ),

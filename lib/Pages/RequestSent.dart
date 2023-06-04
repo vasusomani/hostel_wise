@@ -1,9 +1,24 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hostel_wise/Util/HexToColor.dart';
 
-class RequestSent extends StatelessWidget {
+class RequestSent extends StatefulWidget {
   const RequestSent({Key? key}) : super(key: key);
+
+  @override
+  State<RequestSent> createState() => _RequestSentState();
+}
+
+class _RequestSentState extends State<RequestSent> {
+  void initState() {
+    super.initState();
+
+    Timer(Duration(seconds: 1), () {
+      Navigator.of(context).pop();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

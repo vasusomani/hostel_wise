@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hostel_wise/Pages/HostoryCleaning.dart';
 
 import 'HexToColor.dart';
 
 class CarosalStructure extends StatelessWidget {
-  CarosalStructure(this.imgURL, this.title, this.requestPageWidget);
+  CarosalStructure(this.imgURL, this.title, this.requestPageWidget, this.secKey,
+      this.historyPageWidget);
+
   Widget requestPageWidget;
+  Widget historyPageWidget;
+  String secKey;
   String title;
   String imgURL;
   @override
@@ -67,7 +72,11 @@ class CarosalStructure extends StatelessWidget {
                           child: Padding(
                         padding: const EdgeInsets.all(5),
                         child: ElevatedButton(
-                          onPressed: null,
+                          onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => historyPageWidget,
+                              )),
                           style: ButtonStyle(
                               backgroundColor: MaterialStatePropertyAll(
                                   HexColor("#F7F7F7"))),

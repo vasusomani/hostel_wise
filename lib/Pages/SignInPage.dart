@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hostel_wise/Pages/HomePage.dart';
 import '../Util/HexToColor.dart';
 import 'package:http/http.dart' as http;
 import '../Util/TextFieldAuth.dart';
@@ -16,19 +17,22 @@ class _SignInPageState extends State<SignInPage> {
   final _formKey = GlobalKey<FormState>();
 
   Future<void> _submitData() async {
-    print("FLAG 1");
     final body = {
       "LOGIN": emailID.text,
       "PASSWORD": password.text,
     };
-    print("FLAG 2");
-    final url = "https://a658-182-79-4-248.ngrok-free.app/generallogin/";
-    print("FLAG 3");
+    final url = "https://001b-136-233-9-98.ngrok-free.app/generallogin/";
     final uri = Uri.parse(url);
-    print("FLAG 4");
     final response = await http.post(uri, body: body);
-    print("FLAG 5");
-    print("${response.statusCode}");
+    if (response.statusCode == 202) {
+      final ResponseBody = jsonDecode(response.body);
+      print(response.body);
+      final securityKey = ResponseBody["SECRETKEY"];
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => HomePage(ResponseBody)));
+    } else {
+      print("${response.statusCode}");
+    }
   }
 
   void _authorize() {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hostel_wise/Pages/SignInPage.dart';
 import 'package:http/http.dart' as http;
 import '../Util/HexToColor.dart';
 import '../Util/TextFieldAuth.dart';
@@ -24,15 +25,18 @@ class _SignUpPageState extends State<SignUpPage> {
       "s_Gender": "Male",
       "s_Email": emailID.text,
       "s_Password": password.text,
-      "s_Registration_Number": "69656969",
-      "s_Room_Number": "969",
-      "s_Block": "N"
+      "s_Registration_Number": regNo.text,
+      "s_Room_Number": room.text,
+      "s_Block": "M"
     };
 
-    const url = "https://a658-182-79-4-248.ngrok-free.app/studentregister/";
+    const url = "https://5707-136-233-9-98.ngrok-free.app/studentregister/";
     final uri = Uri.parse(url);
     final response = await http.post(uri, body: body);
-    print("${response.statusCode}");
+    if (response.statusCode == 201) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => SignInPage()));
+    }
   }
 
   void validate() {
@@ -81,20 +85,20 @@ class _SignUpPageState extends State<SignUpPage> {
             ],
           ),
           Expanded(
-            child: SingleChildScrollView(
-              child: Container(
-                padding: const EdgeInsets.only(top: 80),
-                decoration: BoxDecoration(
-                  color: HexColor("#637892"),
-                  borderRadius:
-                      const BorderRadius.only(topLeft: Radius.circular(100)),
-                ),
-                child: GestureDetector(
-                  onTap: () {
-                    FocusScope.of(context).requestFocus(FocusNode());
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20),
+            child: Container(
+              padding: const EdgeInsets.only(top: 80),
+              decoration: BoxDecoration(
+                color: HexColor("#637892"),
+                borderRadius:
+                    const BorderRadius.only(topLeft: Radius.circular(100)),
+              ),
+              child: GestureDetector(
+                onTap: () {
+                  FocusScope.of(context).requestFocus(FocusNode());
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: SingleChildScrollView(
                     child: Container(
                       child: Form(
                         key: _formKey,
@@ -164,6 +168,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                     fontSize: 20),
                               ),
                             ),
+                            SizedBox(height: 20)
                           ],
                         ),
                       ),

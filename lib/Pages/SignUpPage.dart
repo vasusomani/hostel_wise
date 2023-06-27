@@ -3,6 +3,7 @@ import 'package:hostel_wise/Pages/SignInPage.dart';
 import 'package:http/http.dart' as http;
 import '../Util/HexToColor.dart';
 import '../Util/TextFieldAuth.dart';
+import '../Util/httpCalls.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -30,12 +31,14 @@ class _SignUpPageState extends State<SignUpPage> {
       "s_Block": "M"
     };
 
-    const url = "https://5707-136-233-9-98.ngrok-free.app/studentregister/";
+    final url = "$httpUrl/studentregister/";
     final uri = Uri.parse(url);
     final response = await http.post(uri, body: body);
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => SignInPage()));
+    } else {
+      print(response.statusCode);
     }
   }
 

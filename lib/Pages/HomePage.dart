@@ -7,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hostel_wise/Util/HexToColor.dart';
 import 'package:hostel_wise/Util/HomeCarosal.dart';
 
+import '../Util/httpCalls.dart';
+
 class HomePage extends StatefulWidget {
   HomePage(this.ResponseBody);
   final ResponseBody;
@@ -28,7 +30,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _getData() async {
-    final url = "https://001b-136-233-9-98.ngrok-free.app/dashboard/$secKey/Z/";
+    final url = "$httpUrl/dashboard/$secKey/Z/";
     final uri = Uri.parse(url);
     final response = await http.get(uri);
     if (response.statusCode == 202) {

@@ -5,6 +5,8 @@ import 'package:hostel_wise/Pages/HomePage.dart';
 import '../Util/HexToColor.dart';
 import 'package:http/http.dart' as http;
 import '../Util/TextFieldAuth.dart';
+import '../Util/httpCalls.dart';
+import '../Util/MediaQuerry.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -21,7 +23,7 @@ class _SignInPageState extends State<SignInPage> {
       "LOGIN": emailID.text,
       "PASSWORD": password.text,
     };
-    final url = "https://001b-136-233-9-98.ngrok-free.app/generallogin/";
+    final url = "$httpUrl/generallogin/";
     final uri = Uri.parse(url);
     final response = await http.post(uri, body: body);
     if (response.statusCode == 202) {
@@ -76,8 +78,8 @@ class _SignInPageState extends State<SignInPage> {
               children: [
                 Container(
                   color: HexColor("#637892"),
-                  height: 107,
-                  width: 115,
+                  height: Height(107, context),
+                  width: Width(115, context),
                 ),
                 Container(
                   height: 107,

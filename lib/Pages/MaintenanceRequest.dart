@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hostel_wise/Pages/RequestSent.dart';
 import 'package:hostel_wise/Util/HexToColor.dart';
 
+import '../Util/httpCalls.dart';
+
 class MaintenanceRequest extends StatelessWidget {
   MaintenanceRequest(this.secKey);
   String secKey;
@@ -13,8 +15,7 @@ class MaintenanceRequest extends StatelessWidget {
   Widget build(BuildContext context) {
     Future<void> _submitRequest(String data) async {
       final body = {"message": data};
-      final url =
-          "https://001b-136-233-9-98.ngrok-free.app/dashboard/$secKey/C/";
+      final url = "$httpUrl/dashboard/$secKey/C/";
       final uri = Uri.parse(url);
       final response = await http.post(uri, body: body);
       if (response.statusCode == 200) {
@@ -27,6 +28,11 @@ class MaintenanceRequest extends StatelessWidget {
             ));
       } else {
         print("${response.statusCode}");
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => RequestSent(),
+            ));
       }
     }
 

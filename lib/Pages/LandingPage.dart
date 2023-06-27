@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:hostel_wise/Pages/HomePage.dart';
 import 'package:hostel_wise/Pages/HostoryCleaning.dart';
 import 'package:hostel_wise/Pages/IntroPage.dart';
+import 'package:http/http.dart';
 
 class LandingPage extends StatefulWidget {
   @override

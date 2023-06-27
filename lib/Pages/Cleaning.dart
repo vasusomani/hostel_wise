@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hostel_wise/Util/httpCalls.dart';
 import 'package:http/http.dart' as http;
 import '../Util/HexToColor.dart';
 import 'RequestSent.dart';
@@ -48,11 +49,10 @@ class CleaningRequestPage extends StatelessWidget {
     // }
     Future<void> _submitRequest() async {
       final body = {};
-      final url =
-          "https://001b-136-233-9-98.ngrok-free.app/dashboard/$secKey/A/";
+      final url = "$httpUrl/dashboard/$secKey/A/";
       final uri = Uri.parse(url);
       final response = await http.post(uri, body: body);
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         final ResponseBody = jsonDecode(response.body);
         print(response.body);
         Navigator.push(
@@ -61,6 +61,11 @@ class CleaningRequestPage extends StatelessWidget {
               builder: (context) => RequestSent(),
             ));
       } else {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => RequestSent(),
+            ));
         print("${response.statusCode}");
       }
     }

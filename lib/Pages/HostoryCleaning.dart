@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 import '../Util/HexToColor.dart';
+import '../Util/httpCalls.dart';
 import 'RequestSent.dart';
 
 class HistoryCleaning extends StatefulWidget {
@@ -23,8 +24,7 @@ class _HistoryCleaningState extends State<HistoryCleaning> {
   }
 
   Future<void> _fetchCleaningHistory() async {
-    final url =
-        "https://001b-136-233-9-98.ngrok-free.app/dashboard/${widget.secKey}/A/";
+    final url = "$httpUrl/dashboard/${widget.secKey}/A/";
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       final responseBody = jsonDecode(response.body);

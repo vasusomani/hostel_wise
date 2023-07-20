@@ -1,16 +1,8 @@
 # hostel_wise
 
 A new Flutter project.
+Built during DEVSOC23 Hackathon
+HostelWise is an application which digitalizes your routine hostel activities. From requesting for cleaning service to finding your lost items in Lost and Found section. This app can do everything.
+Backend for this app was built in Django and is connected to application using http api calls
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Figmafile : https://www.figma.com/file/lohs5y8tbXOtMiA7d0rX3V/Untitled?type=design&node-id=0%3A1&t=CFjHz62mdoU7V0G4-1
